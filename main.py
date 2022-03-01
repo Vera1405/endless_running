@@ -42,6 +42,7 @@ def start_screen2():
         pygame.display.flip()
         clock.tick(FPS)
 
+
 def start_screen():
     text = ["нажмите, чтобы начать",
             "",
