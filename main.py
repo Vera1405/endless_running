@@ -1,7 +1,7 @@
 import pygame
 from random import randint
 import sys
-import random
+import os
 
 
 WIDTH = 800
@@ -91,6 +91,7 @@ def load_image(name):
 
     return image
 
+
 #images
 RUNNING = pygame.transform.scale((pygame.image.load("girl.png")), (64, 64))
 LARGE_CACTUS = pygame.transform.scale((pygame.image.load("LargeCactus1.png")), (78, 78))
@@ -105,6 +106,8 @@ class Player(pygame.sprite.Sprite):
         self.is_now_jump = False
         self.y_speed = 0
         self.JUMP_POWER = 16
+        self.score = score
+        self.high_score = 0
 
     def jump(self):
         if not self.is_now_jump:
@@ -149,7 +152,8 @@ while running:
         if event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
             player.jump()
             score += 1
-    if len(all_sprites) < 3:
+
+    if len(all_sprites) < 2:
         obstacle = Obstacle()
         all_sprites.add(obstacle)
     all_sprites.update()
